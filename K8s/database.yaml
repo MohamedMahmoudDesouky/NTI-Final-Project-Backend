@@ -9,10 +9,12 @@ spec:
   selector:
     matchLabels:
       app: postgres
+      tier: database
   template:
     metadata:
       labels:
         app: postgres
+        tier: database
     spec:
       containers:
         - name: postgres
@@ -25,12 +27,14 @@ spec:
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
+
   volumeClaimTemplates:
     - metadata:
         name: postgres-data
       spec:
         accessModes:
           - ReadWriteOnce
+        storageClassName: custom-gp2
         resources:
           requests:
             storage: 5Gi

@@ -3,13 +3,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: postgres-pvc
   namespace: final-project
-  labels:
-    app: postgres
-    tier: database
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: custom-gp2   # لازم يكون نفس اسم الـ StorageClass
   resources:
     requests:
       storage: 5Gi
-  storageClassName: manual

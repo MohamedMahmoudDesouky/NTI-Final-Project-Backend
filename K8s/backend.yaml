@@ -8,10 +8,14 @@ spec:
   selector:
     matchLabels:
       app: backend
+      tier: backend
+      component: api
   template:
     metadata:
       labels:
         app: backend
+        tier: backend
+        component: api
     spec:
       initContainers:
         - name: wait-for-postgres
@@ -22,7 +26,7 @@ spec:
             - until nc -z postgres 5432; do echo waiting for db; sleep 5; done
       containers:
         - name: backend
-          image: omaradel2001/task-backend:v1.5
+          image: 067970016113.dkr.ecr.us-east-1.amazonaws.com/backend:v1
           ports:
             - containerPort: 5000
           envFrom:

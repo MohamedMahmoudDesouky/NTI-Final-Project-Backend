@@ -8,6 +8,7 @@ metadata:
   labels:
     app: backend
     tier: backend
+    component: api
     pdb/final-project: "true"
 spec:
   maxUnavailable: 1  # Explicitly allow only 1 pod disruption
