@@ -27,14 +27,11 @@ spec:
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
-
-  volumeClaimTemplates:
+  volumeClaimTemplates:  # ← ده هيخلق PVC تاني اسمه postgres-data-postgres-0
     - metadata:
         name: postgres-data
       spec:
-        accessModes:
-          - ReadWriteOnce
-        storageClassName: custom-gp2
+        accessModes: [ReadWriteOnce]
         resources:
           requests:
             storage: 5Gi
